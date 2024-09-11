@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% from 'bootstrap5/form.html' import render_form %}
+{% block title %}Create New Book{% endblock %}
+
+<!--  -->
+{% block content %}
+<main>
+    <section>
+        <div class="book-create">
+            <div class="container py-5">
+                <!--  -->
+                <div class="content">
+                    <div class="mb-5 d-flex justify-content-between">
+                        <h2 class="">Add new Book</h2>
+
+                        <a
+                            href="{{ url_for('books.list') }}"
+                            class="btn btn-primary"
+                        >
+                            Back to all Books
+                        </a>
+                    </div>
+
+                    {{ render_form(form) }}
+                </div>
+                <!--  -->
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

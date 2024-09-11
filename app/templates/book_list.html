@@ -1,0 +1,83 @@
+{% extends 'base.html' %} {% block title %}Library Books{% endblock %}
+
+<!--  -->
+{% block content %}
+<main>
+    <section>
+        <div class="books">
+            <div class="container py-5">
+                <!--  -->
+                <div class="content">
+                    <div class="d-flex">
+                        <div class="mb-3 me-3">
+                            <a
+                                href="{{ url_for('books.create') }}"
+                                class="btn btn-primary"
+                            >
+                                Add New Book
+                            </a>
+                        </div>
+                    </div>
+
+                    <h2>All Books</h2>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Image</th>
+                                <th>Show</th>
+
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for book in books %}
+                            <tr>
+                                <td>{{book.id}}</td>
+                                <td>{{book.name}}</td>
+                                <td>{{book.description }}</td>
+                                <td>{{book.image}}</td>
+                                <td>
+                                    <a
+                                        href="{{book.show_url}}"
+                                        class="btn btn-info text-white"
+                                    >
+                                        Show
+                                    </a>
+                                </td>
+
+                                <td>
+                                    <a
+                                        href="{{book.update_url}}"
+                                        class="btn btn-success"
+                                        >Update</a
+                                    >
+                                </td>
+                                <td>
+                                    <form
+                                        action="{{ book.delete_url }}"
+                                        method="POST"
+                                    >
+                                        <input
+                                            type="submit"
+                                            value="Delete"
+                                            class="btn btn-danger"
+                                        />
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!--  -->
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
